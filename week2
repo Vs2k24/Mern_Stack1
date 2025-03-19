@@ -1,0 +1,43 @@
+// 1. Age and isAdult variables
+let age = 25;
+let isAdult = age >= 18;
+console.log('Age:', age);
+console.log('Is Adult:', isAdult);
+
+// 2. Arithmetic operations with x and y
+let x = 10;
+let y = 5;
+
+let addition = x + y;
+let multiplication = x * y;
+let modulus = x % y;
+
+console.log('\nArithmetic Operations:');
+console.log('x + y =', addition);
+console.log('x * y =', multiplication);
+console.log('x % y =', modulus);
+
+// 3. Check if number is even or odd
+let n = 7;  // You can change this number to test
+let isEven = n % 2 === 0;
+
+console.log('\nNumber Check:');
+console.log(`${n} is ${isEven ? 'even' : 'odd'}`);
+
+// 4. Store numbers 1-5 in array using for loop
+let numbers = [];
+for (let i = 1; i <= 5; i++) {
+    numbers.push(i);
+}
+console.log('\nArray with numbers 1-5:', numbers);
+
+// 5. Function to return square of a number
+function square(num) {
+    return num * num;
+}
+
+// Test the square function with different numbers
+console.log('\nTesting square function:');
+console.log('square(4) =', square(4));
+console.log('square(3) =', square(3));
+console.log('square(10) =', square(10));
