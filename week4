@@ -1,0 +1,71 @@
+MERN Assignment Week 4 - Solution
+
+### Frontend (React.js & Tailwind CSS)
+
+1. **Landing Page**  
+   - Create a new React app:  
+     npx create-react-app my-shop
+     cd my-shop
+     npm install tailwindcss
+   - Configure Tailwind in `tailwind.config.js` and include it in `index.css`.
+   - Create a `Hero` component with a title and description.
+   - Create a `Products` component displaying multiple products.
+   - Implement a responsive navbar and footer with social media links.
+
+2. **Product Details Page**  
+   - Use React Router (`npm install react-router-dom`).
+   - Define routes for the home page (`/`) and product details page (`/product/:id`).
+   - Display additional details when a product is clicked.
+
+---
+
+### Backend (Express.js)
+
+1. **Setting Up the Server**  
+   - Install Express:  
+     npm init -y
+     npm install express cors body-parser
+   - Create `server.js` and set up middleware:
+     const express = require('express');
+     const app = express();
+     const port = 5000;
+     
+     app.use(express.json());
+
+     app.get('/welcome', (req, res) => {
+         res.json({ message: "Welcome to Express!" });
+     });
+
+     app.listen(port, () => console.log(`Server running on port ${port}`));
+
+2. **User Management (In-Memory Storage)**
+   - Define an array to store users:
+     let users = [];
+
+     app.get('/users', (req, res) => {
+         res.json(users);
+     });
+
+     app.post('/users', (req, res) => {
+         const { id, name, email } = req.body;
+         users.push({ id, name, email });
+         res.json({ message: "User added successfully!" });
+     });
+
+     app.put('/users/:id', (req, res) => {
+         const { id } = req.params;
+         const { name, email } = req.body;
+         const user = users.find(u => u.id === id);
+         if (user) {
+             user.name = name;
+             user.email = email;
+             res.json({ message: "User updated successfully!" });
+         } else {
+             res.status(404).json({ message: "User not found!" });
+         }
+     });
+
+     app.delete('/users/:id', (req, res) => {
+         users = users.filter(user => user.id !== req.params.id);
+         res.json({ message: "User deleted successfully!" });
+     });
